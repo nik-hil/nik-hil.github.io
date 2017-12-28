@@ -3,7 +3,7 @@
 ## Game playing with AI is hard. We look for strategies for turn based games
 
 1. Game we pick is Isolation. Player1 starts with 'O'
-1. image
+1. ![isolation game] (https://github.com/nik-hil/nik-hil.github.io/blob/master/aind-1/images/isolation.jpeg?raw=true)
 1. Build a tree of all possiblities. Find the branches where player1 will loose. 
 1. Teach computer to find loosing branches with a version of [MiniMax algorithm](https://classroom.udacity.com/nanodegrees/nd889/parts/6be67fd1-9725-4d14-b36e-ae2b5b20804c/modules/f719d723-7ee0-472c-80c1-663f02de94f3/lessons/9b1a742a-fa2d-4940-922c-ed426b44f81b/concepts/49461227440923).
 
