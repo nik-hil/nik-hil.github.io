@@ -1,7 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-03T19:50:16+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">My Learning with AI</title><subtitle>Site to demostrate Artificial Intelligence basic &amp; capabilities</subtitle><entry><title type="html">Why initialization is important in neural net</title><link href="http://localhost:4000/pytorch/initialization/2019/05/03/why-initialization-is-important.html" rel="alternate" type="text/html" title="Why initialization is important in neural net" /><published>2019-05-03T19:24:42+05:30</published><updated>2019-05-03T19:24:42+05:30</updated><id>http://localhost:4000/pytorch/initialization/2019/05/03/why-initialization-is-important</id><content type="html" xml:base="http://localhost:4000/pytorch/initialization/2019/05/03/why-initialization-is-important.html">&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hi, #{name}&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-03T20:42:03+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">My Learning with AI</title><subtitle>Site to demostrate Artificial Intelligence basics &amp; capabilities</subtitle><entry><title type="html">Game playing introduction in artificial intelligence</title><link href="http://localhost:4000/game/2017/12/07/game-playing-introduction.html" rel="alternate" type="text/html" title="Game playing introduction in artificial intelligence" /><published>2017-12-07T19:24:42+05:30</published><updated>2017-12-07T19:24:42+05:30</updated><id>http://localhost:4000/game/2017/12/07/game-playing-introduction</id><content type="html" xml:base="http://localhost:4000/game/2017/12/07/game-playing-introduction.html">&lt;h1 id=&quot;week-2-game-playing-with-ai&quot;&gt;WEEK-2 Game playing with AI&lt;/h1&gt;
 
-&lt;hr /&gt;</content><author><name></name></author><summary type="html">def print_hi(name): puts &quot;Hi, #{name}&quot; end print_hi('Tom') #=&amp;gt; prints 'Hi, Tom' to STDOUT.</summary></entry></feed>
+&lt;h2 id=&quot;game-playing-with-ai-is-hard-we-look-for-strategies-for-turn-based-games&quot;&gt;Game playing with AI is hard. We look for strategies for turn based games&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Game we pick is Isolation. Player1 starts with ‘O’&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/assets/aind-1/images/isolation.jpeg?raw=true&quot; alt=&quot;isolation-game&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Build a tree of all possiblities. Find the branches where player1 will loose.&lt;/li&gt;
+  &lt;li&gt;Teach computer to find loosing branches with a version of &lt;a href=&quot;https://classroom.udacity.com/nanodegrees/nd889/parts/6be67fd1-9725-4d14-b36e-ae2b5b20804c/modules/f719d723-7ee0-472c-80c1-663f02de94f3/lessons/9b1a742a-fa2d-4940-922c-ed426b44f81b/concepts/49461227440923&quot;&gt;MiniMax algorithm&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;max-number-of-nodes-visited&quot;&gt;Max number of nodes visited.&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;for 5 x 5 board of isolation game, at each turn number of available branches are , &lt;code class=&quot;highlighter-rouge&quot;&gt;25 * 24 * 23 * ... * 3 * 2 * 1 = 10^25&lt;/code&gt;. Not feasible.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;branching-factor&quot;&gt;Branching factor&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Consider branching factor. After each player turn no of empty boxes decreases. When P1 starts it has max 16 places for second turn. After this it has max of 12 option to play. No of available branch &lt;code class=&quot;highlighter-rouge&quot;&gt;25 x 24 x 12^11 x 5e8 ~ 3e23&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Average branching factor. Find number of branches at each level and divide it by level. Play the game for multiple time. Avg branching is ~8.&lt;/li&gt;
+  &lt;li&gt;Time taken to find sol with avg branching factor is &lt;code class=&quot;highlighter-rouge&quot;&gt;8^25 ~= e22 ~ 1.22 million yrs&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;We can limit the depth of our branching to 2 sec (UX).&lt;/li&gt;
+  &lt;li&gt;&lt;img src=&quot;/assets/aind-1/images/depth.jpeg?raw=true&quot; alt=&quot;isolation-game&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;We assume we have 9 level to compute in 2 sec.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;evaluation-fun--quiescent-search&quot;&gt;Evaluation Fun &amp;amp; Quiescent Search&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;We need to know at level 9 which player has most boxes to play. We call this evaluation fun and pass it to minimax algo.&lt;/li&gt;
+  &lt;li&gt;The result of evaluation fun will change and it depends on the level at which evaluation fun starts.&lt;/li&gt;
+  &lt;li&gt;The idea of quiescence is that the static evaluator should not be applied to positions whose values are unstable, such as those occurring in the middle of the piece trade. In those positions, a small secondary search is conducted until the static evaluation becomes more stable. In games such as chess or checkers, this can be achieved by always exploring any capture moves one level deeper. This extra search is called quiescence search. Applying quiescence search to capture moves quickly will resolve the uncertainties in the position.&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">WEEK-2 Game playing with AI</summary></entry></feed>
