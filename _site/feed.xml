@@ -1,4 +1,183 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-04T20:12:24+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">My Learning with AI</title><subtitle>Site to demostrate Artificial Intelligence basics &amp; capabilities</subtitle><entry><title type="html">How does activation initialization affect training in neural network</title><link href="http://localhost:4000/2019/05/04/how-does-activation-initialization-affect-training-in-neural-network.html" rel="alternate" type="text/html" title="How does activation initialization affect training in neural network" /><published>2019-05-04T19:24:42+05:30</published><updated>2019-05-04T19:24:42+05:30</updated><id>http://localhost:4000/2019/05/04/how-does-activation-initialization-affect-training-in-neural-network</id><content type="html" xml:base="http://localhost:4000/2019/05/04/how-does-activation-initialization-affect-training-in-neural-network.html">&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torch&lt;/span&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-06T13:53:00+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">My Learning with AI</title><subtitle>Site to demostrate Artificial Intelligence basics &amp; capabilities</subtitle><entry><title type="html">How to train a model in Pytorch or fastai from scratch</title><link href="http://localhost:4000/2019/05/06/how-to-train-a-model-in-Pytorch-or-fastai-from-scratch.html" rel="alternate" type="text/html" title="How to train a model in Pytorch or fastai from scratch" /><published>2019-05-06T12:24:42+05:30</published><updated>2019-05-06T12:24:42+05:30</updated><id>http://localhost:4000/2019/05/06/how-to-train-a-model-in-Pytorch-or-fastai-from-scratch</id><content type="html" xml:base="http://localhost:4000/2019/05/06/how-to-train-a-model-in-Pytorch-or-fastai-from-scratch.html">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Only required in google colab 
+!curl -s https://course.fast.ai/setup/colab | bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Updating fastai...
+Done.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%load_ext autoreload
+%autoreload 2
+
+%matplotlib inline
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import operator
+
+def test(a,b,cmp,cname=None):
+    if cname is None: cname=cmp.__name__
+    assert cmp(a,b),f&quot;{cname}:\n{a}\n{b}&quot;
+
+def test_eq(a,b): test(a,b,operator.eq,'==')
+
+from pathlib import Path
+from IPython.core.debugger import set_trace
+from fastai import datasets
+import pickle, gzip, math, torch, matplotlib as mpl
+import matplotlib.pyplot as plt
+from torch import tensor
+
+MNIST_URL='http://deeplearning.net/data/mnist/mnist.pkl'
+
+def near(a,b): return torch.allclose(a, b, rtol=1e-3, atol=1e-5)
+def test_near(a,b): test(a,b,near)
+    
+def get_data():
+    path = datasets.download_data(MNIST_URL, ext='.gz')
+    with gzip.open(path, 'rb') as f:
+        ((x_train, y_train), (x_valid, y_valid), _) = pickle.load(f, encoding='latin-1')
+    return map(tensor, (x_train, y_train, x_valid, y_valid))
+
+def normalize(x, mean, std_dev):
+    return (x-mean)/std_dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from torch import nn
+import torch.nn.functional as F
+mpl.rcParams['image.cmap'] = 'gray'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x_train,y_train,x_valid,y_valid = get_data()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;n, m = x_train.shape
+c = y_train.max() + 1
+nh = 50
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Model(nn.Module):
+    def __init__(self, n_in, nh, n_out):
+        super().__init__()
+        self.layers = [nn.Linear(n_in, nh), nn.ReLU(), nn.Linear(nh, n_out)]
+        
+    def __call__(self, x):
+        for l in self.layers:
+            x = l(x)
+        return x
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pred&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def log_softmax(x):
+    exp = x.exp()
+    return (exp/exp.sum(-1, keepdim=True)).log()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sm_pred = log_softmax(pred)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def nll(inp, targ): # -ve log likelihood
+    return -inp[range(targ.shape[0]), targ].mean()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#integer-array-indexing&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; x = np.array([[1, 2], [3, 4], [5, 6]])
+&amp;gt;&amp;gt;&amp;gt; x[[0, 1, 2], [0, 1, 0]]
+array([1, 4, 5])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;loss = nll(sm_pred, y_train)
+loss
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tensor(2.3060, grad_fn=&amp;lt;NegBackward&amp;gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;log_softmax is similified with &lt;a href=&quot;https://en.wikipedia.org/wiki/LogSumExp&quot;&gt;log sum exp trick&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def logsumexp(x):
+    m = x.max(-1)[0]
+    return m + (x-m[:,None]).exp().sum(-1).log()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;test_near(logsumexp(pred), pred.logsumexp(-1))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Same is availabel in Pytorch as F.nll_loss, F.log_softmax.&lt;/p&gt;
+
+&lt;p&gt;Using both F.cross_entropy is built&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;test_near(F.cross_entropy(pred, y_train), loss)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;training-loop&quot;&gt;Training Loop&lt;/h1&gt;
+
+&lt;p&gt;A training loop will do the following&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;init all param in model&lt;/li&gt;
+  &lt;li&gt;Calculate y_pred from input &amp;amp; model&lt;/li&gt;
+  &lt;li&gt;calculate loss&lt;/li&gt;
+  &lt;li&gt;Claculate the gradient wrt to every param in model&lt;/li&gt;
+  &lt;li&gt;update those param&lt;/li&gt;
+  &lt;li&gt;Repeat&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;loss_func = F.cross_entropy
+
+def accuracy(out, yb):
+    return (torch.argmax(out, dim=1) == yb).float().mean()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;accuracy(pred, y_train), accuracy(pred[:10], y_train[:10])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(tensor(0.0981), tensor(0.))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Lets create a training loop&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lr = .5
+epochs = 1
+bs = 64
+n
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;50000
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for epoch in range(epochs):
+    for i in range((n-1)//bs + 1):
+        start_i = i * bs
+        end_i = start_i + bs
+        xb = x_train[start_i: end_i]
+        yb = y_train[start_i: end_i]
+        loss = loss_func(model(xb), yb)
+        
+        loss.backward()
+        with torch.no_grad():
+            for l in model.layers:
+                if hasattr(l, 'weight'):
+                    l.weight -= l.weight.grad * lr
+                    l.bias   -= l.bias.grad   * lr
+                    l.weight.grad.zero_()
+                    l.bias  .grad.zero_()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;loss_func(model(xb), yb), accuracy(model(xb), yb)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(tensor(0.1773, grad_fn=&amp;lt;NllLossBackward&amp;gt;), tensor(0.9375))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nn.ModuleList??
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="Pytorch" /><category term="fastai" /><category term="training" /><summary type="html"># Only required in google colab !curl -s https://course.fast.ai/setup/colab | bash</summary></entry><entry><title type="html">How does activation initialization affect training in neural network</title><link href="http://localhost:4000/2019/05/04/how-does-activation-initialization-affect-training-in-neural-network.html" rel="alternate" type="text/html" title="How does activation initialization affect training in neural network" /><published>2019-05-04T19:24:42+05:30</published><updated>2019-05-04T19:24:42+05:30</updated><id>http://localhost:4000/2019/05/04/how-does-activation-initialization-affect-training-in-neural-network</id><content type="html" xml:base="http://localhost:4000/2019/05/04/how-does-activation-initialization-affect-training-in-neural-network.html">&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torch&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
