@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "How does activation initialization affect training in neural network"
 date:   2019-05-04 19:24:42 +0530
 tags: [AI, activation, initialization]

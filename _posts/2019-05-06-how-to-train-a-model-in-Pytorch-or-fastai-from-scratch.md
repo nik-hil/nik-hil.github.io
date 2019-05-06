@@ -6,7 +6,7 @@ tags: [Pytorch, fastai, training]
 ---
 
 
-```
+```python
 # Only required in google colab 
 !curl -s https://course.fast.ai/setup/colab | bash
 ```
@@ -14,7 +14,7 @@ tags: [Pytorch, fastai, training]
     Updating fastai...
     Done.
 
-```
+```python
 %load_ext autoreload
 %autoreload 2
 
@@ -22,7 +22,7 @@ tags: [Pytorch, fastai, training]
 ```
 
 
-```
+```python
 import operator
 
 def test(a,b,cmp,cname=None):

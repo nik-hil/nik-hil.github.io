@@ -13,29 +13,31 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: My Learning with AI
-# email: your-email@example.com
+title: Nikhil Ikhar
+email: "nikhil.ikhar@gmail.com"
 description: >- # this means to ignore newlines until "baseurl:"
-  Site to demostrate Artificial Intelligence basics & capabilities
-# baseurl: "" # the subpath of your site, e.g. /blog
-# url: "" # the base hostname & protocol for your site, e.g. http://example.com
-# twitter_username: jekyllrb
+  Many things about Aritficial Intelligence, Pytorch & Fastai
+#baseurl: "" # the subpath of your site, e.g. /blog
+#url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  nik-hil
 
+repository_url: "https://github.com/nik-hil"
+
 # Build settings
-markdown: kramdown
-theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
+# A list of the pages to display in the navigation bar
+header_pages:
+  about
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - update_boostrap.sh
+
+show_excerpts: true

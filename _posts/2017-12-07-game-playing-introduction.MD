@@ -1,8 +1,6 @@
 ---
-layout: post
+
 title:  "Game playing introduction in artificial intelligence"
-date:   2017-12-07 19:24:42 +0530
-categories: game 
 ---
 
 
