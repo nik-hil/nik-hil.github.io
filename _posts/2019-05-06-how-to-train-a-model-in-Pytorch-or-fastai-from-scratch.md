@@ -5,7 +5,17 @@ date:   2019-05-06 12:24:42 +0530
 tags: [Pytorch, fastai, training]
 ---
 
+What are the steps to train my model in neural network? It is not very different than what we have 
+learnt in our school days. Question was,
 
+ 1. Given a Simple quadratic function find the minima.
+ 1. We will draw the function.
+ 1. Choose a point and find the slope at that point.
+ 1. Move in direction where minima is less.
+ 1. We repeat above steps till we find a point were slope was zero.
+
+ Ofcourse this was in school and problems were easy. In neural network we do the same.
+ 
 ```python
 # Only required in google colab 
 !curl -s https://course.fast.ai/setup/colab | bash

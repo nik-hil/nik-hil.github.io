@@ -7,15 +7,15 @@
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="How to train a model in Pytorch or fastai from scratch" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="# Only required in google colab !curl -s https://course.fast.ai/setup/colab | bash" />
-<meta property="og:description" content="# Only required in google colab !curl -s https://course.fast.ai/setup/colab | bash" />
+<meta name="description" content="What are the steps to train my model in neural network? It is not very different than what we have learnt in our school days. Question was," />
+<meta property="og:description" content="What are the steps to train my model in neural network? It is not very different than what we have learnt in our school days. Question was," />
 <link rel="canonical" href="http://localhost:4000/2019/05/06/how-to-train-a-model-in-Pytorch-or-fastai-from-scratch.html" />
 <meta property="og:url" content="http://localhost:4000/2019/05/06/how-to-train-a-model-in-Pytorch-or-fastai-from-scratch.html" />
 <meta property="og:site_name" content="Nikhil Ikhar" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-05-06T12:24:42+05:30" />
 <script type="application/ld+json">
-{"headline":"How to train a model in Pytorch or fastai from scratch","dateModified":"2019-05-06T12:24:42+05:30","url":"http://localhost:4000/2019/05/06/how-to-train-a-model-in-Pytorch-or-fastai-from-scratch.html","datePublished":"2019-05-06T12:24:42+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2019/05/06/how-to-train-a-model-in-Pytorch-or-fastai-from-scratch.html"},"description":"# Only required in google colab !curl -s https://course.fast.ai/setup/colab | bash","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"headline":"How to train a model in Pytorch or fastai from scratch","dateModified":"2019-05-06T12:24:42+05:30","url":"http://localhost:4000/2019/05/06/how-to-train-a-model-in-Pytorch-or-fastai-from-scratch.html","datePublished":"2019-05-06T12:24:42+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2019/05/06/how-to-train-a-model-in-Pytorch-or-fastai-from-scratch.html"},"description":"What are the steps to train my model in neural network? It is not very different than what we have learnt in our school days. Question was,","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Nikhil Ikhar" /><script src="/assets/javascript/bootstrap/jquery.min.js"></script>
   <script src="/assets/javascript/bootstrap/bootstrap.bundle.min.js"></script>
@@ -46,7 +46,20 @@
   </header>
 
   <section>
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Only required in google colab </span>
+    <p>What are the steps to train my model in neural network? It is not very different than what we have 
+learnt in our school days. Question was,</p>
+
+<ol>
+  <li>Given a Simple quadratic function find the minima.</li>
+  <li>We will draw the function.</li>
+  <li>Choose a point and find the slope at that point.</li>
+  <li>Move in direction where minima is less.</li>
+  <li>We repeat above steps till we find a point were slope was zero.</li>
+</ol>
+
+<p>Ofcourse this was in school and problems were easy. In neural network we do the same.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Only required in google colab </span>
 <span class="err">!</span><span class="n">curl</span> <span class="o">-</span><span class="n">s</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">course</span><span class="o">.</span><span class="n">fast</span><span class="o">.</span><span class="n">ai</span><span class="o">/</span><span class="n">setup</span><span class="o">/</span><span class="n">colab</span> <span class="o">|</span> <span class="n">bash</span>
 </code></pre></div></div>
 
