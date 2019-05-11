@@ -7,7 +7,7 @@ tags: [Pytorch, fastai, training]
 One of biggest challenge any AI engineer will face is how create a mathematicla function to train our model in better way.
 Mathematical function which we can use in our training is very significant.
 
-Fastai uses (Cyclic learning rate finder)[https://arxiv.org/pdf/1506.01186.pdf]
+Fastai uses [Cyclic learning rate finder](https://arxiv.org/pdf/1506.01186.pdf)
 
 ```
 # Only required in google colab 
