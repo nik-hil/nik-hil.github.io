@@ -83,7 +83,7 @@ c = y_train.max() + 1
 nh = 50
 ```
 
-# Lets create our Model </summary>
+# Lets create our Model
 
 ```python
 class Model(nn.Module):
@@ -135,6 +135,7 @@ At times it can be very confusing.
 array([1, 4, 5])
 ```
  
+# Lets check our loss
 
 ```python
 loss = nll(sm_pred, y_train)
@@ -260,7 +261,7 @@ loss_func(model(xb), yb), accuracy(model(xb), yb)
 
 
 
-```python
+```console
 nn.ModuleList??
 ```
 
