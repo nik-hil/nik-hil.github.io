@@ -64,26 +64,26 @@ def normalize(x, mean, std_dev):
 ```
 
 
-```
+```python
 from torch import nn
 import torch.nn.functional as F
 mpl.rcParams['image.cmap'] = 'gray'
 ```
 
 
-```
+```python
 x_train,y_train,x_valid,y_valid = get_data()
 ```
 
 
-```
+```python
 n, m = x_train.shape
 c = y_train.max() + 1
 nh = 50
 ```
 
 
-```
+```python
 class Model(nn.Module):
     def __init__(self, n_in, nh, n_out):
         super().__init__()
@@ -96,38 +96,38 @@ class Model(nn.Module):
 ```
 
 
-```
+```python
 model = Model(m, nh, 10)
 pred = model(x_train)
 ```
 
 
-```
+```python
 def log_softmax(x):
     exp = x.exp()
     return (exp/exp.sum(-1, keepdim=True)).log()
 ```
 
 
-```
+```python
 sm_pred = log_softmax(pred)
 ```
 
 
-```
+```python
 def nll(inp, targ): # -ve log likelihood
     return -inp[range(targ.shape[0]), targ].mean()
 ```
 
 https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#integer-array-indexing
-```
+```python
 >>> x = np.array([[1, 2], [3, 4], [5, 6]])
 >>> x[[0, 1, 2], [0, 1, 0]]
 array([1, 4, 5])
 ```
 
 
-```
+```python
 loss = nll(sm_pred, y_train)
 loss
 ```
@@ -144,14 +144,14 @@ log_softmax is similified with [log sum exp trick](https://en.wikipedia.org/wiki
 
 
 
-```
+```python
 def logsumexp(x):
     m = x.max(-1)[0]
     return m + (x-m[:,None]).exp().sum(-1).log()
 ```
 
 
-```
+```python
 test_near(logsumexp(pred), pred.logsumexp(-1))
 ```
 
@@ -160,7 +160,7 @@ Same is availabel in Pytorch as F.nll_loss, F.log_softmax.
 Using both F.cross_entropy is built
 
 
-```
+```python
 test_near(F.cross_entropy(pred, y_train), loss)
 ```
 
@@ -179,7 +179,7 @@ A training loop will do the following
 
 
 
-```
+```python
 loss_func = F.cross_entropy
 
 def accuracy(out, yb):
@@ -187,7 +187,7 @@ def accuracy(out, yb):
 ```
 
 
-```
+```python
 accuracy(pred, y_train), accuracy(pred[:10], y_train[:10])
 ```
 
@@ -201,7 +201,7 @@ accuracy(pred, y_train), accuracy(pred[:10], y_train[:10])
 Lets create a training loop
 
 
-```
+```python
 lr = .5
 epochs = 1
 bs = 64
@@ -216,7 +216,7 @@ n
 
 
 
-```
+```python
 for epoch in range(epochs):
     for i in range((n-1)//bs + 1):
         start_i = i * bs
@@ -237,7 +237,7 @@ for epoch in range(epochs):
 ```
 
 
-```
+```python
 loss_func(model(xb), yb), accuracy(model(xb), yb)
 ```
 
@@ -249,7 +249,7 @@ loss_func(model(xb), yb), accuracy(model(xb), yb)
 
 
 
-```
+```python
 nn.ModuleList??
 ```
 

@@ -19,7 +19,7 @@ Fastai uses [Cyclic learning rate finder](https://arxiv.org/pdf/1506.01186.pdf)
 
 
 
-```
+```python
 from functools import partial
 import math
 from matplotlib import pyplot as plt
@@ -40,7 +40,7 @@ We have created an annealer. It will help us to implement the mathematical func 
 Next we implement the mathmatical function.
 
 
-```
+```python
 @annealer
 def sched_cos(start, end, pos): 
     return start + (1 + math.cos(math.pi*(1-pos))) * (end-start) / 2
@@ -63,7 +63,7 @@ def sched_exp(start, end, pos):
 ```
 
 
-```
+```python
 annealings = "NO LINEAR COS EXP".split()
 torch.Tensor.ndim = property(lambda x: len(x.shape))
 
@@ -83,7 +83,7 @@ plt.legend();
 
 
 
-```
+```python
 p
 ```
 
