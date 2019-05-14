@@ -165,7 +165,7 @@ def logsumexp(x):
 
 
 ```python
-    test_near(logsumexp(pred), pred.logsumexp(-1))
+test_near(logsumexp(pred), pred.logsumexp(-1))
 ```
 
 Same is availabel in Pytorch as F.nll_loss, F.log_softmax.
