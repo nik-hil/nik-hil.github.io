@@ -31,8 +31,7 @@ learnt in our school days. Question was,
 %matplotlib inline
 ```
 
-<details>
-  <summary> Lets Import code </summary>
+# Lets Import code 
 
 ```python
 import operator
@@ -64,7 +63,7 @@ def get_data():
 def normalize(x, mean, std_dev):
     return (x-mean)/std_dev
 ```
-</details>
+
 
 ```python
 from torch import nn
@@ -84,7 +83,7 @@ c = y_train.max() + 1
 nh = 50
 ```
 
-<details> <summary>We create our Model </summary>
+# Lets create our Model </summary>
 
 ```python
 class Model(nn.Module):
@@ -97,7 +96,7 @@ class Model(nn.Module):
             x = l(x)
         return x
 ```
-</details>
+
 
 ```python
 model = Model(m, nh, 10)
@@ -121,7 +120,7 @@ sm_pred = log_softmax(pred)
 def nll(inp, targ): # -ve log likelihood
     return -inp[range(targ.shape[0]), targ].mean()
 ```
-<details> <summary> Higher dimension indexing.</summary> 
+# Higher dimension indexing.
 
 Here we are using higher dimension indexing.
 Numpy support this.
@@ -135,7 +134,7 @@ At times it can be very confusing.
 >>> x[[0, 1, 2], [0, 1, 0]]
 array([1, 4, 5])
 ```
-</details>
+ 
 
 ```python
 loss = nll(sm_pred, y_train)
@@ -224,7 +223,7 @@ n
     50000
 
 
-We create our training loop.
+# We create our training loop.
 
 ```python
 for epoch in range(epochs):
