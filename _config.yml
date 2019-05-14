@@ -41,3 +41,7 @@ exclude:
   - update_boostrap.sh
 
 show_excerpts: true
+
+# syntax hightlighting 
+# https://mycyberuniverse.com/syntax-highlighting-jekyll.html
+highlighter: rouge

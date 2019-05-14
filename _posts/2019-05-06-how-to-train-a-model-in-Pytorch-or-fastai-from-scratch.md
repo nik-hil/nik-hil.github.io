@@ -31,6 +31,8 @@ learnt in our school days. Question was,
 %matplotlib inline
 ```
 
+<details>
+  <summary> Lets Import code </summary>
 
 ```python
 import operator
@@ -62,7 +64,7 @@ def get_data():
 def normalize(x, mean, std_dev):
     return (x-mean)/std_dev
 ```
-
+</details>
 
 ```python
 from torch import nn
@@ -70,7 +72,7 @@ import torch.nn.functional as F
 mpl.rcParams['image.cmap'] = 'gray'
 ```
 
-
+We get our training and validation data
 ```python
 x_train,y_train,x_valid,y_valid = get_data()
 ```
@@ -82,6 +84,7 @@ c = y_train.max() + 1
 nh = 50
 ```
 
+<details> <summary>We create our Model </summary>
 
 ```python
 class Model(nn.Module):
@@ -94,7 +97,7 @@ class Model(nn.Module):
             x = l(x)
         return x
 ```
-
+</details>
 
 ```python
 model = Model(m, nh, 10)
@@ -118,14 +121,21 @@ sm_pred = log_softmax(pred)
 def nll(inp, targ): # -ve log likelihood
     return -inp[range(targ.shape[0]), targ].mean()
 ```
+<details> <summary> Higher dimension indexing.</summary> 
+
+Here we are using higher dimension indexing.
+Numpy support this.
 
 https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#integer-array-indexing
+
+At times it can be very confusing.
+
 ```python
 >>> x = np.array([[1, 2], [3, 4], [5, 6]])
 >>> x[[0, 1, 2], [0, 1, 0]]
 array([1, 4, 5])
 ```
-
+</details>
 
 ```python
 loss = nll(sm_pred, y_train)
@@ -214,15 +224,17 @@ n
     50000
 
 
-
+We create our training loop.
 
 ```python
 for epoch in range(epochs):
     for i in range((n-1)//bs + 1):
         start_i = i * bs
         end_i = start_i + bs
+        # grab a batch of x & y from start_i to end_i
         xb = x_train[start_i: end_i]
         yb = y_train[start_i: end_i]
+        # predict output and calculate loss
         loss = loss_func(model(xb), yb)
         
         loss.backward()
@@ -232,7 +244,7 @@ for epoch in range(epochs):
                     l.weight -= l.weight.grad * lr
                     l.bias   -= l.bias.grad   * lr
                     l.weight.grad.zero_()
-                    l.bias  .grad.zero_()
+                    l.bias.grad.zero_()
 
 ```
 
