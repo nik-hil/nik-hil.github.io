@@ -21,8 +21,10 @@ learnt in our school days. Question was,
 !curl -s https://course.fast.ai/setup/colab | bash
 ```
 
+```console
     Updating fastai...
     Done.
+```
 
 ```python
 %load_ext autoreload
@@ -72,6 +74,7 @@ mpl.rcParams['image.cmap'] = 'gray'
 ```
 
 We get our training and validation data
+
 ```python
 x_train,y_train,x_valid,y_valid = get_data()
 ```
@@ -144,9 +147,9 @@ loss
 
 
 
-
+```console
     tensor(2.3060, grad_fn=<NegBackward>)
-
+```
 
 
 log_softmax is similified with [log sum exp trick](https://en.wikipedia.org/wiki/LogSumExp)
@@ -162,7 +165,7 @@ def logsumexp(x):
 
 
 ```python
-test_near(logsumexp(pred), pred.logsumexp(-1))
+    test_near(logsumexp(pred), pred.logsumexp(-1))
 ```
 
 Same is availabel in Pytorch as F.nll_loss, F.log_softmax.
@@ -203,9 +206,9 @@ accuracy(pred, y_train), accuracy(pred[:10], y_train[:10])
 
 
 
-
+```console
     (tensor(0.0981), tensor(0.))
-
+```
 
 
 Lets create a training loop
@@ -219,10 +222,9 @@ n
 ```
 
 
-
-
+```console
     50000
-
+```
 
 # We create our training loop.
 
@@ -255,9 +257,9 @@ loss_func(model(xb), yb), accuracy(model(xb), yb)
 
 
 
-
+```console
     (tensor(0.1773, grad_fn=<NllLossBackward>), tensor(0.9375))
-
+```
 
 
 
