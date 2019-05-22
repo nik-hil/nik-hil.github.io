@@ -1,3 +1,18 @@
+---
+layout: post
+title:  "Visualizing model training in Fastai/Pytorch"
+date:   2019-05-22 12:24:42 +0530
+tags: [Visualization, Pytorch, fastai, training]
+---
+
+One of the challenges in model training is to be sure if our model is initialized correctly.
+
+We also want to debug/visualize the state of model. It helps in model training if we know what we are looking for. 
+
+For e.g. if we know the model activations initial value should be normally distributed then, we should make sure we they are normally distributed.
+
+In this post we look for the various methods to visualize model. Post goes through, plotting model state, creating hooks, plotting charts etc.
+
 ```
 # only on google colab
 !curl -s https://course.fast.ai/setup/colab | bash
