@@ -18,7 +18,10 @@ email: "nikhil.ikhar@gmail.com"
 description: >- # this means to ignore newlines until "baseurl:"
   Many things about Aritficial Intelligence, Pytorch & Fastai
 #baseurl: "" # the subpath of your site, e.g. /blog
-#url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+# the base hostname & protocol for your site, e.g. http://example.com
+# used with jekyll-sitemap
+url: "https://nik-hil.github.io" 
 github_username:  nik-hil
 
 repository_url: "https://github.com/nik-hil"
