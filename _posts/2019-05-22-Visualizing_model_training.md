@@ -489,7 +489,7 @@ plt.legend(range(6));
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_28_0.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_28_0.png)
 
 
 ## Changes in std of first 6 layers  for 300 iterations
@@ -502,7 +502,7 @@ plt.legend(range(6));
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_30_0.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_30_0.png)
 
 
 ## Changes in mean of first 6 layers for 10 iterations
@@ -514,7 +514,7 @@ plt.legend(range(6));
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_32_0.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_32_0.png)
 
 
 ## Changes in std of first 6 layers for 10 iterations
@@ -526,7 +526,7 @@ plt.legend(range(6));
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_34_0.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_34_0.png)
 
 
 
@@ -621,7 +621,7 @@ plt.legend(range(6));
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_39_0.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_39_0.png)
 
 
 
@@ -655,11 +655,11 @@ with Hooks(model, append_stats) as hooks:
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_40_1.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_40_1.png)
 
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_40_2.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_40_2.png)
 
 
 ### We initialize model with kaiming normal initialization
@@ -707,11 +707,11 @@ with Hooks(model, append_stats) as hooks:
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_44_1.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_44_1.png)
 
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_44_2.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_44_2.png)
 
 
 Now it shows our values are starting close to zero mean & 1 std at the start of training
@@ -772,7 +772,7 @@ plt.tight_layout()
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_50_0.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_50_0.png)
 
 
 
@@ -797,7 +797,7 @@ plt.tight_layout()
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_52_0.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_52_0.png)
 
 
 Most of them are filled with non zero values. But it is not giving mean 0 & std 1
@@ -884,11 +884,11 @@ with Hooks(model, append_stats) as hooks:
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_57_1.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_57_1.png)
 
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_57_2.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_57_2.png)
 
 
 
@@ -901,7 +901,7 @@ plt.tight_layout()
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_58_0.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_58_0.png)
 
 
 Most of values are in middle of Y axis
@@ -921,7 +921,7 @@ plt.tight_layout()
 ```
 
 
-![png](/assets/images/2019-05-22/Regularization_effect_in_a_model_training_files/Regularization_effect_in_a_model_training_60_0.png)
+![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_60_0.png)
 
 
 now many activations are empty close to 20-40 %
