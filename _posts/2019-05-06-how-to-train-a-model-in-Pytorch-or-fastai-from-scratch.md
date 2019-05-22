@@ -271,3 +271,4 @@ nn.ModuleList??
 ```
 
 ```
+Thanks [fast.ai](https://www.fast.ai/) for this tutorial.

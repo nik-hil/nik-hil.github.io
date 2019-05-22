@@ -112,3 +112,4 @@ It looks like basis for [Kaiming initialization](https://arxiv.org/abs/1502.0185
 ```python
 
 ```
+Thanks [fast.ai](https://www.fast.ai/) for this tutorial.
