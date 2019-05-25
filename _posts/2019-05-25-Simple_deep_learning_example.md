@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Simplest deep learning example in Fastai/Pytorch"
+date:   2019-05-25 12:24:42 +0530
+tags: [Visualization, Pytorch, fastai, training, example]
+---
+
 
 What can be a simplest deep learning example?
 
