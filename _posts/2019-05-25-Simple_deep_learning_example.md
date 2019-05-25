@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Simplest deep learning example in Fastai/Pytorch"
+title:  "Simplest neural network example in Fastai/Pytorch"
 date:   2019-05-25 12:24:42 +0530
 tags: [Visualization, Pytorch, fastai, training, example]
 ---
 
 
-What can be a simplest deep learning example?
+What can be a simplest neural network example?
 
 
 ```python
@@ -18,7 +18,7 @@ What can be a simplest deep learning example?
     Done.
 ```
 
-We will implement simplest deep learning with simple example of a line.
+We will implement simplest neural network with simple example of a line.
 
 A line is represented as 
 
@@ -34,7 +34,7 @@ $ y_i = a_1x_{1i} + a_2 x_{2i}$
 
 
 => to represent a point on a line  
-$y$ is a dot product to matrix $x$ & $a$ i.deep learninge
+$y$ is a dot product to matrix $x$ & $a$ i.neural networke
 
 $\bar y $ =X $\bar a $ 
 
@@ -85,7 +85,7 @@ plt.scatter(x[:,0], y);
 ```
 
 
-![png](/assets/images/2019-05-25/Simple_deep_learning_example_files/Simple_deep_learning_example_6_0.png)
+![png](/assets/images/2019-05-25/Simple_neural_network_example_files/Simple_neural_network_example_6_0.png)
 
 
 In NN we have only `x & y`. `a` is not available to us and we have to predict `a`. 
@@ -179,7 +179,7 @@ plt.title("Calculated")
 
 
 
-![png](/assets/images/2019-05-25/Simple_deep_learning_example_files/Simple_deep_learning_example_13_1.png)
+![png](/assets/images/2019-05-25/Simple_neural_network_example_files/Simple_neural_network_example_13_1.png)
 
 
 Thanks https://fast.ai for this example.
