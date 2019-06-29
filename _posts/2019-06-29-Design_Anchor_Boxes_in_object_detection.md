@@ -27,7 +27,7 @@ We can use following table as ref to determine box size.
 
 
 
-
+{% capture text-capture %}
 ```
 %load_ext autoreload
 %autoreload 2
@@ -101,6 +101,10 @@ def create_anchors(sizes, ratios, scales, flatten=True):
         anchors.append(ancs.view(h,w,a,4))
     return torch.cat([anc.view(-1,4) for anc in anchors],0) if flatten else anchors
 ```
+{% endcapture %}
+
+{% include toggle-field.html toggle-name="helperCode" button-text="Code Hide" toggle-text=text-capture %}
+
 
 # Lets Print some images
 

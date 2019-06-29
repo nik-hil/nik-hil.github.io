@@ -1,0 +1,26 @@
+
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#{{include.toggle-name}}").toggle();
+    console.log("yo");
+  });
+  $("#{{include.toggle-name}}").toggle();
+  console.log("yo");
+});
+</script>
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        <h4 class="panel-title">
+            <button >
+            {% if include.button-text %} {{include.button-text}} {% else %} Open {% endif %}
+            </button>
+        </h4>
+        </div>
+        <div id="{{include.toggle-name}}" class="panel-collapse collapse">
+        <div class="panel-body">{{include.toggle-text | markdownify }}</div>
+        <div class="panel-footer">{{include.footer}}</div>
+        </div>
+    </div>
+</div>
