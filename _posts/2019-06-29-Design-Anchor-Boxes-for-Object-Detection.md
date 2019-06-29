@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Design Anchor Boxes in object detection"
+title:  "Design Anchor Boxes for Object Detection"
 date:   2019-06-29 19:24:42 +0530
 tags: Anchor BoundingBox ObjectDetection
 ---
