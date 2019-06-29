@@ -5,12 +5,13 @@ date:   2019-06-29 19:24:42 +0530
 tags: Anchor BoundingBox ObjectDetection
 ---
 
+![png](/assets/images/2019-06-29/Design_Anchor_Boxes_in_object_detection_files/grid_1.png)
 
-Understanding the anchor boxes in object detection is tricky. The grid size will determines the denisity of achor boxes.
+Understanding the anchor boxes in object detection is tricky. The grid size will determine the density of anchor boxes.
 
-Density of anchor boxes is not related to image size. But in practice we need to know if our anchor boxes are big enough to indentify the objects. 
+The density of anchor boxes is not related to image size. But in practice, we need to know if our anchor boxes are big enough to identify the objects. 
 
-We can use following table as ref to determine box size.
+We can use the following table as ref to determine box size.
 
 
 | Image Size | Grid Size | Box size|
@@ -108,9 +109,9 @@ def create_anchors(sizes, ratios, scales, flatten=True):
 
 # Lets Print some images
 
-We need some of helper function to create a bounding box with some representation.
+We need some of the helper function to create a bounding box with some representation.
 
-Combination of scale & ratio gives different size of boxes in image.
+Combination of scale & ratio gives the different size of boxes in an image.
 
 ```
 >>> ratios = [1/2,1,2]
@@ -127,11 +128,11 @@ Combination of scale & ratio gives different size of boxes in image.
 
 `size` divides the image and creates the grid. 
 
-`size` decides how far anchor box is placed in the image.
+`size` decides how far the anchor box is placed in the image.
 
 See with one size of (2,2) how boxes are placed.
 
-With in each grid, all the 9 boxes will be placed. 
+Within each grid, all the 9 boxes will be placed. 
 
 
 ```Python
@@ -179,7 +180,7 @@ for b in range(box):
 
 # Effect of dense grid. 
 
-If `size = 32,32`, we will get more dense grid. Dense grid will help to detect more smaller objects.
+If `size = 32,32`, we will get more dense grid. A dense grid will help to detect smaller objects.
 
 We are skipping 27 anchors before plotting next anchor.
 
@@ -297,7 +298,7 @@ def show_boxes(boxes, ax=None):
         draw_text(ax, [bb[1]-bb[3]/2,bb[0]-bb[2]/2], str(i), color=color_list[i%num_color])
 ```
 
-Anchors going out of boundary are discarded. These anchors box are going out of the frame are generally discarded in object detection. But check again.
+Anchors going out of boundary are discarded. These anchors boxes are going out of the frame are generally discarded in object detection. But check again.
 
 
 ```Python
@@ -319,14 +320,9 @@ show_boxes(anchors[120:140])
 ![png](/assets/images/2019-06-29/Design_Anchor_Boxes_in_object_detection_files/Design_Anchor_Boxes_in_object_detection_18_1.png)
 
 
-First few 100 boxes are just being discarded. Anchors between this range fits in boundary.
+First few 100 boxes are just being discarded. Anchors between this range fits in the boundary.
 
 Anchors from around 500 fits in the frame.
-
-
-
-
-
 
 ```Python
 show_boxes(anchors[500:510])
@@ -336,7 +332,7 @@ show_boxes(anchors[500:510])
 ![png](/assets/images/2019-06-29/Design_Anchor_Boxes_in_object_detection_files/Design_Anchor_Boxes_in_object_detection_20_0.png)
 
 
-`scale` used in code. gives better bbox
+`scale` used in the code, gives better bounding box
 
 
 ```Python
@@ -358,7 +354,7 @@ show_boxes(anchors[504:510])
 ![png](/assets/images/2019-06-29/Design_Anchor_Boxes_in_object_detection_files/Design_Anchor_Boxes_in_object_detection_22_1.png)
 
 
-If size is not reversed. We look at bigger bbox first.
+If the size is not reversed. We look at bigger bounding box first.
 
 
 ```Python
@@ -381,8 +377,7 @@ show_boxes(anchors[504:510])
 
 `size` is changed to 2 to 32. 
 
-
-`scale` is diff from one used in pascal.ipynb in fastai
+`scale` is diff from one used in pascal.ipynb in fastai.
 
 
 ```Python
