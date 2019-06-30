@@ -5,8 +5,10 @@ date:   2019-05-04 19:24:42 +0530
 tags: activation initialization
 ---
 
+* toc
+{:toc}
 
-Initialization affect training in neural network
+# Initialization affect training in neural network
 
 ```python
 import torch
@@ -108,7 +110,8 @@ It looks like there is a link between the number of tensor shape and final mean,
 
 It looks like basis for [Kaiming initialization](https://arxiv.org/abs/1502.01852)
 
-### Yes our initialization will affect our training of neural network.
+# Conclusion
+Yes our initialization will affect our training of neural network.
 
 
 ```python

@@ -5,6 +5,9 @@ date:   2019-05-06 12:24:42 +0530
 tags: [pytorch, fastai, training]
 ---
 
+* toc
+{:toc}
+
 What are the steps to train my model in neural network? It is not very different than what we have 
 learnt in our school days. Question was,
 

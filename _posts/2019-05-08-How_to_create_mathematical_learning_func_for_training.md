@@ -6,6 +6,9 @@ tags: [pytorch, fastai, training]
 ---
 ![png](/assets/images/2019-05-08/How_to_create_mathematical_learning_func_for_training_6_0.png)
 
+* toc
+{:toc}
+
 One of biggest challenge any AI engineer will face is how create a mathematica; function to train our model in better way.
 Mathematical function which we can use in our training is very significant.
 

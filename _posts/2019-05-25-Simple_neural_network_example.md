@@ -5,6 +5,8 @@ date:   2019-05-25 12:24:42 +0530
 tags: visualization  pytorch fastai training example
 ---
 
+* toc
+{:toc}
 
 What can be a simplest neural network example?
 
@@ -17,6 +19,7 @@ What can be a simplest neural network example?
     Updating fastai...
     Done.
 ```
+# Simple Implementation
 
 We will implement simplest neural network with simple example of a line.
 
@@ -92,7 +95,7 @@ In NN we have only `x & y`. `a` is not available to us and we have to predict `a
 
 To start calculation we randomly initialize `a`
 
-
+# Loss function
 ```python
 def mse(y_hat, y): 
     return ((y_hat-y)**2).mean()
@@ -127,7 +130,7 @@ def update():
         a.grad.zero_()
 ```
 
-
+# Little training
 ```python
 lr = 1e-1
 for t in range(100):
@@ -158,6 +161,7 @@ a
     tensor([2.9956, 1.9999], requires_grad=True)
 
 
+# Result visualization
 
 We can the value of predicted `a` is close to original `[3,2]`
 

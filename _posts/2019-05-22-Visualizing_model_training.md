@@ -4,6 +4,8 @@ title:  "Visualizing model training in Fastai/Pytorch"
 date:   2019-05-22 12:24:42 +0530
 tags: [visualization, pytorch, fastai, training]
 ---
+* toc
+{:toc}
 
 One of the challenges in model training is to be sure if our model is initialized correctly.
 

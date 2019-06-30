@@ -7,6 +7,9 @@ tags: Anchor BoundingBox ObjectDetection
 
 ![png](/assets/images/2019-06-29/Design_Anchor_Boxes_in_object_detection_files/grid_1.png)
 
+* toc
+{:toc}
+
 Understanding the anchor boxes in object detection is tricky. The grid size will determine the density of anchor boxes.
 
 The density of anchor boxes is not related to image size. But in practice, we need to know if our anchor boxes are big enough to identify the objects. 
@@ -27,7 +30,7 @@ We can use the following table as ref to determine box size.
 | 128, 128 | 8,8 | 128/8 => 16|
 
 
-
+# Helper function
 {% capture text-capture %}
 ```
 %load_ext autoreload
@@ -35,12 +38,6 @@ We can use the following table as ref to determine box size.
 
 %matplotlib inline
 ```
-
-
-
-# Helper function
-
-
 
 ```Python
 
