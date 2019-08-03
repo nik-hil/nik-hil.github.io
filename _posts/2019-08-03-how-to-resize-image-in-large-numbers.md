@@ -42,7 +42,7 @@ I m working with [kaggle competition](https://www.kaggle.com/c/imaterialist-fash
  1. I m converting all images to size of 224 x 224 irrespective of original size.
  1. Large cpu count will help. `parallel` will create new mogrify commands for each image on each cpu. 
  1. Use `ls -l <target-dir>-224 | wc -l` to find the progress of conversion.
- 1. After using above steps, I was able to convert 17Gb compressed images to 728Mb compressed images.
+ 1. After using above steps, I was able to convert 17Gb compressed images to 700+Mb compressed images.
    ```
    $ ls -ltrh
    total 19G
