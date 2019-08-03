@@ -10,12 +10,12 @@ tags: [training, image, resize, parallel, mogrify]
 
 # Resizing
 
-Following is useful when you have to work with large quantity of images.
-I m working with [kaggle competition](https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/data). I will preprocess the files to speed up the trainign process.
+Following is useful when you have to work with a large number of images.
+I m working with [kaggle competition](https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/data). I will preprocess the files to speed up the training process.
 
 # Does preprocessing help?
  
- 1. During training many cpu cycles are wasted to recreate the desired image size. If images are lost, then in new training cycle we have to recreate them
+ 1. During training, many CPU cycles are wasted to recreate the desired image size. If images are lost, then in the new training cycle we have to recreate them
  1. Using parallel will reduce the time to preprocess the image.
 
 # Steps
