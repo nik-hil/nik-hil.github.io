@@ -15,7 +15,7 @@ Gemfile.lock
 
 # Files
 .analysis
-.DS_Store
+*.DS_Store
 *.swp
 *~
 

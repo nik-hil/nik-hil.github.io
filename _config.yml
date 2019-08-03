@@ -29,6 +29,7 @@ google_analytics:   UA-140656569-1
 repository_url: "https://github.com/nik-hil"
 
 # Build settings
+future: true
 markdown: kramdown
 theme: minima
 plugins:
