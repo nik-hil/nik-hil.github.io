@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to resize images in large numbers"
-date:   2019-08-03 12:24:42 +0530
+date:   2019-08-03 2:24:42 +0530
 tags: [training, image, resize, parallel, mogrify]
 ---
 
