@@ -8,17 +8,17 @@ tags: [training, image, resize, parallel, mogrify]
 * toc
 {:toc}
 
-# Resizing
+## Resizing
 
 Following is useful when you have to work with a large number of images.
 I m working with [kaggle competition](https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/data). I will preprocess the files to speed up the training process.
 
-# Does preprocessing help?
+## Does preprocessing help?
  
  1. During training, many CPU cycles are wasted to recreate the desired image size. If images are lost, then in the new training cycle we have to recreate them
  1. Using parallel will reduce the time to preprocess the image.
 
-# Steps
+## Steps
 
  1. Install kaggle `pip3 install kaggle` with token. See https://github.com/Kaggle/kaggle-api
  1. Download desired files `kaggle competitions download favorita-grocery-sales-forecasting -f test.csv.7z`
@@ -54,7 +54,7 @@ I m working with [kaggle competition](https://www.kaggle.com/c/imaterialist-fash
    ```
  
 
-# See
+## See
 
  1. [https://github.com/Kaggle/kaggle-api](https://github.com/Kaggle/kaggle-api)
  1. [https://fedoramagazine.org/edit-images-parallel-imagemagick/](https://fedoramagazine.org/edit-images-parallel-imagemagick/)

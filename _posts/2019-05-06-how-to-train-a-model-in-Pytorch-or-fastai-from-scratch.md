@@ -36,7 +36,7 @@ learnt in our school days. Question was,
 %matplotlib inline
 ```
 
-# Lets Import code 
+## Import code 
 
 ```python
 import operator
@@ -89,7 +89,7 @@ c = y_train.max() + 1
 nh = 50
 ```
 
-# Lets create our Model
+## Create our Model
 
 ```python
 class Model(nn.Module):
@@ -126,7 +126,7 @@ sm_pred = log_softmax(pred)
 def nll(inp, targ): # -ve log likelihood
     return -inp[range(targ.shape[0]), targ].mean()
 ```
-# Higher dimension indexing.
+## Higher dimension indexing.
 
 Here we are using higher dimension indexing.
 Numpy support this.
@@ -141,7 +141,7 @@ At times it can be very confusing.
 array([1, 4, 5])
 ```
  
-# Lets check our loss
+## Lets check our loss
 
 ```python
 loss = nll(sm_pred, y_train)
@@ -180,7 +180,7 @@ Using both F.cross_entropy is built
 test_near(F.cross_entropy(pred, y_train), loss)
 ```
 
-# Training Loop
+## Training Loop
 
 A training loop will do the following
 
@@ -229,7 +229,7 @@ n
     50000
 ```
 
-# We create our training loop.
+## We create our training loop.
 
 ```python
 for epoch in range(epochs):

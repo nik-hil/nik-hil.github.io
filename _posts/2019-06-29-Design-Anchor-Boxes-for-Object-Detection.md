@@ -30,7 +30,7 @@ We can use the following table as ref to determine box size.
 | 128, 128 | 8,8 | 128/8 => 16|
 
 
-# Helper function
+## Helper function
 {% capture text-capture %}
 ```
 %load_ext autoreload
@@ -104,7 +104,7 @@ def create_anchors(sizes, ratios, scales, flatten=True):
 {% include toggle-field.html toggle-name="helperCode" button-text="Code Hide" toggle-text=text-capture %}
 
 
-# Lets Print some images
+## Lets Print some images
 
 We need some of the helper function to create a bounding box with some representation.
 
@@ -147,7 +147,7 @@ def show_boxes(boxes, ax=None):
 
 ```
 
-# Effect of sparse grid. 
+## Effect of sparse grid. 
 
 
 ```Python
@@ -175,7 +175,7 @@ for b in range(box):
 ![png](/assets/images/2019-06-29/Design_Anchor_Boxes_in_object_detection_files/Design_Anchor_Boxes_in_object_detection_8_1.png)
 
 
-# Effect of dense grid. 
+## Effect of dense grid. 
 
 If `size = 32,32`, we will get more dense grid. A dense grid will help to detect smaller objects.
 
@@ -203,7 +203,7 @@ for b in range(box):
 ![png](/assets/images/2019-06-29/Design_Anchor_Boxes_in_object_detection_files/Design_Anchor_Boxes_in_object_detection_10_0.png)
 
 
-# Both sparse and dense grid 
+## Both sparse and dense grid 
 
 If we have 5 different grid size then depending on where we look, we will get different boxes.
 

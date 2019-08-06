@@ -46,7 +46,7 @@ fastai.__version__, torch.__version__
 ```
 
 
-# Some Import & Generic Code
+## Some Import & Generic Code
 
 
 ```python
@@ -121,7 +121,7 @@ def get_dls(train_ds, valid_ds, bs, **kwargs):
 
 ```
 
-# Create dataset and model
+## Create dataset and model
 
 
 ```python
@@ -198,7 +198,7 @@ def get_cnn_model(data):
 model = get_cnn_model(data)
 ```
 
-# Define call back, recorder, AvgStatsCallback
+## Define call back, recorder, AvgStatsCallback
 
 
 ```python
@@ -392,7 +392,7 @@ run = Runner(cb_funcs=cbfs)
     Wall time: 3.87 s
 
 
-# Well lets add Cuda support
+## Well lets add Cuda support
 
 
 ```python
@@ -440,7 +440,7 @@ run = Runner(cb_funcs=cbfs)
     Wall time: 6.89 s
 ```
 
-# We will visualize std & mean at first few layers
+## We will visualize std & mean at first few layers
 
 
 ```python
@@ -493,7 +493,7 @@ run = Runner(cb_funcs=cbfs)
     Wall time: 2.8 s
 ```
 
-## Change in mean of first 6 layer for 300 iterations
+### Change in mean of first 6 layer for 300 iterations
 
 
 ```python
@@ -509,7 +509,7 @@ plt.legend(range(6));
 ![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_28_0.png)
 
 
-## Changes in std of first 6 layers  for 300 iterations
+### Changes in std of first 6 layers  for 300 iterations
 
 
 ```python
@@ -522,7 +522,7 @@ plt.legend(range(6));
 ![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_30_0.png)
 
 
-## Changes in mean of first 6 layers for 10 iterations
+### Changes in mean of first 6 layers for 10 iterations
 
 
 ```python
@@ -534,7 +534,7 @@ plt.legend(range(6));
 ![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_32_0.png)
 
 
-## Changes in std of first 6 layers for 10 iterations
+### Changes in std of first 6 layers for 10 iterations
 
 
 ```python
@@ -679,7 +679,7 @@ with Hooks(model, append_stats) as hooks:
 ![png](/assets/images/2019-05-22/Visualizing_model_training_files/Visualizing_model_training_40_2.png)
 
 
-### We initialize model with kaiming normal initialization
+## We initialize model with kaiming normal initialization
 
 
 ```python
@@ -819,7 +819,7 @@ plt.tight_layout()
 
 Most of them are filled with non zero values. But it is not giving mean 0 & std 1
 
-# Generalized ReLU
+## Generalized ReLU
 
 
 ```python
@@ -1035,5 +1035,5 @@ run.fit(3, learn)
 
 ```
 Thanks fast.ai for this tutorial.
-# Based on 
+## Based on 
 https://github.com/fastai/fastai_docs/blob/master/dev_course/dl2/06_cuda_cnn_hooks_init.ipynb

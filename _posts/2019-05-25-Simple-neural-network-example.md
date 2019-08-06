@@ -19,7 +19,7 @@ What can be a simplest neural network example?
     Updating fastai...
     Done.
 ```
-# Simple Implementation
+## Simple Implementation
 
 We will implement simplest neural network with simple example of a line.
 
@@ -42,7 +42,7 @@ $y$ is a dot product to matrix $x$ & $a$ i.neural networke
 $\bar y $ =X $\bar a $ 
 
  
-# Create the line
+## Create the line
 
 
 ```python
@@ -95,7 +95,7 @@ In NN we have only `x & y`. `a` is not available to us and we have to predict `a
 
 To start calculation we randomly initialize `a`
 
-# Loss function
+## Loss function
 ```python
 def mse(y_hat, y): 
     return ((y_hat-y)**2).mean()
@@ -130,7 +130,7 @@ def update():
         a.grad.zero_()
 ```
 
-# Little training
+## Little training
 ```python
 lr = 1e-1
 for t in range(100):
@@ -161,7 +161,7 @@ a
     tensor([2.9956, 1.9999], requires_grad=True)
 
 
-# Result visualization
+## Result visualization
 
 We can the value of predicted `a` is close to original `[3,2]`
 
