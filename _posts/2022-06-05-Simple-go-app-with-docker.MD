@@ -2,7 +2,9 @@
 layout: post
 title:  "Simple Go app with docker"
 date:   2022-06-05 2:24:42 +0530
-tags: [go, docker, size]
+tags:
+ - go
+ - docker
 ---
 
 * toc
