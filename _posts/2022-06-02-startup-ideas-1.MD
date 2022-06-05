@@ -1,6 +1,6 @@
 ---
 
-title: Suggest meme with AI
+title: Startup idea: Suggest meme with AI
 ---
 
 
