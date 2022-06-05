@@ -7,8 +7,6 @@ tags:
  - docker
 ---
 
-* toc
-{:toc}
 
 This will show how to use docker to create the container with go without using any other base image. Is creating an app from scratch is better than using any base image?
 
