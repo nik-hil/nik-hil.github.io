@@ -8,9 +8,11 @@ tags: [go, docker, size]
 * toc
 {:toc}
 
-[Github repo](https://github.com/nik-hil/go-docker)
+This will show how to use docker to create the container with go without using any other base image. Is creating an app from scratch is better than using any base image?
 
-This will show how to use docker to create the container with go without using any other base image.
+In which scenarios we should use the scratch and base image for our containers?
+
+[Github repo](https://github.com/nik-hil/go-docker)
 
 There are two Docker file in git repo.
 
