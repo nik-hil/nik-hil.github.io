@@ -1,7 +1,12 @@
 ---
-
-title: Simple go app with docker
+layout: post
+title:  "Simple Go app with docker"
+date:   2022-06-05 2:24:42 +0530
+tags: [go, docker, size]
 ---
+
+* toc
+{:toc}
 
 [Github repo](https://github.com/nik-hil/go-docker)
 
