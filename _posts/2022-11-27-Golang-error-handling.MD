@@ -50,7 +50,8 @@ Hello World
 2022/11/26 17:55:05 Call B(), Call A(), A error
 ```
 
-### Using pkg/errors
+### Using github.com/pkg/errors
+This particular package is now archived. But still available for download via `go get` command. 
 
 ```go
 // https://goplay.tools/snippet/CThylnUxj4i
