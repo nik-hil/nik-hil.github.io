@@ -15,7 +15,7 @@ tags:
 Golang error handling is different from the traditional programming language.
 
 ```go
-# https://goplay.tools/snippet/1FBSURLzkxb
+// https://goplay.tools/snippet/1FBSURLzkxb
 package main
 
 import (
