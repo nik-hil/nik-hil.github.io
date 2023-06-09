@@ -7,8 +7,8 @@ tags:
  - tutorial
 ---
 
-##Introduction:
-In the world of JSON processing, it's not uncommon to come across scenarios where you need to map multiple keys to a single member in a JSON struct. This can be particularly useful when dealing with data from different sources or when handling legacy systems with inconsistent naming conventions. In this blog post, we will explore how to accomplish this mapping in Golang using the `json.Marshal` and `json.Unmarshal` functions.
+## Introduction
+In the world of JSON processing, it's not uncommon to come across scenarios where you need to map multiple keys to a single member in a JSON struct. This can be particularly useful when dealing with data from different sources or when handling legacy systems with inconsistent naming conventions. In this blog post, we will explore how to accomplish this mapping in Golang using the `json.Unmarshal` functions.
 
 Mapping Two Keys:
 Let's say we have a JSON struct called `Response` with the following definition:
@@ -23,7 +23,7 @@ type Response struct {
 
 Now, imagine we receive JSON data from two different sources, where one source uses the key `"passed"` and the other source mistakenly uses the key `"passeds"`. Our goal is to map both keys to the `Passed` member of the `Response` struct, allowing us to handle data from both sources seamlessly.
 
-##Implementing UnmarshalJSON:
+## Implementing UnmarshalJSON
 Similarly, we need to implement the `UnmarshalJSON` method to handle the reverse mapping during JSON decoding. Here's an example implementation:
 
 ```go
@@ -49,13 +49,13 @@ func (pr *Response) UnmarshalJSON(data []byte) error {
 }
 
 ```
-Check out complete code at https://goplay.tools/snippet/a6_GcLfQigN
+Check out complete code at [https://goplay.tools/snippet/a6_GcLfQigN](https://goplay.tools/snippet/a6_GcLfQigN)
 
 In this implementation, we create an auxiliary struct that includes the `Passed` member alongside the alias. We unmarshal the JSON data into this auxiliary struct and then assign the value of `Passeds` to the `Passed` member of the `Response` struct.
 
-##Conclusion:
+## Conclusion
 By implementing the `UnmarshalJSON` methods for the `Response` struct, we can seamlessly handle JSON data with different key names. This allows us to map two keys to a single member in the JSON struct and achieve greater flexibility and compatibility in our applications.
 
 Mapping keys in JSON structs is just one example of how Golang's flexibility and powerful JSON processing capabilities can help us handle complex data scenarios. With a deeper understanding of JSON encoding and decoding, we can build robust and adaptable applications that gracefully handle diverse data sources.
 
-We hope this blog post has provided valuable insights into mapping two keys to a single member in JSON structs using Golang. Feel free to explore further and experiment with different scenarios to enhance your JSON processing capabilities.
+I hope this blog post has provided valuable insights into mapping two keys to a single member in JSON structs using Golang. Feel free to explore further and experiment with different scenarios to enhance your JSON processing capabilities.
