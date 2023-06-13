@@ -1,4 +1,13 @@
-# Title: Deadlocks in MySQL with Upsert Query
+---
+layout: post
+title:  MySQL deadlock with Upsert query
+date:   2023-06-12 19:24:42 +0530
+tags: MySQL Deadlock Golang
+---
+
+* toc
+{:toc}
+
 
 ## Introduction:
 In high-performance database systems, deadlocks can sometimes occur, leading to errors and degraded performance. This blog post aims to shed light on the scenario where upsert operations in MySQL result in "Error 1213: Deadlock found when trying to get lock." We will explore the reasons behind this error, the impact of varying workload sizes, and provide strategies for resolving deadlocks and optimizing performance.
@@ -22,7 +31,7 @@ Inserting 100 rows in gave better CPU utilization.
 
 ## Resolving Deadlocks and Improving Performance
 
-I have opted for using retry mechanism to do upsert. Sample (untested) code in Golang with Gorm,
+Without MySQL server, I have opted for using retry mechanism to do upsert. Sample (untested) code in Golang with Gorm,
 ```Golang
 func Publish(rows []Message) {
 	start := time.Now()
@@ -53,5 +62,6 @@ func shouldRetry(err error) bool {
 	return false
 }
 ```
+Other ways can be to go for Postgres or Oracle DB. 
 
 [Note: This blog post is intended to provide insights and general guidance. It is recommended to consult the official MySQL documentation and seek expert advice for specific deadlock scenarios and complex database setups.]
